@@ -12,15 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('course_prices', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('is_trainer')->nullable();
+            $table->decimal('price', 4, 2);
+            $table->decimal('early_bird_price', 4, 2);
+            $table->date('early_bird_start_date')->nullable();
+            $table->date('early_bird_end_date')->nullable();
+            $table->integer('discount')->default(0);
             $table->foreignIdFor(Course::class, 'course_id')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('course_prices');
     }
 };
