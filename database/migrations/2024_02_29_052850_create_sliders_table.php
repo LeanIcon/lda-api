@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cta_url')->nullable();
             $table->string('button_name')->nullable();
             $table->string('button_url')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

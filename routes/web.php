@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin/login'); // Redirect to the actual login route
 });
+
+Route::view('/docs', 'scribe.index')->name('scribe');
+
+// Route::get('/login', function () {
+//     return redirect(route('filament.admin.auth.login'));
+// })->name('login');
+
+

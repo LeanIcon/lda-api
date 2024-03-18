@@ -19,6 +19,7 @@ class CourseTopicFactory extends Factory
         return [
             'topic' =>  fake()->text(),
             'description' =>  fake()->paragraph('2'),
+            'course_id' => fake()->numberBetween(1, 30), // Percentage
         ];
     }
 }

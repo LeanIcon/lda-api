@@ -22,7 +22,8 @@ class SliderFactory extends Factory
             'cta_name' =>  fake()->text(),
             'cta_url' =>  fake()->url(),
             'button_name' =>  fake()->text(),
-            'button_url' =>  fake()->url()
+            'button_url' =>  fake()->url(),
+            'is_active' =>  fake()->boolean(70),
         ];
     }
 }

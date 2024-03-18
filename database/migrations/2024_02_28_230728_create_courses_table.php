@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\CoursePrice;
-use App\Models\CourseTopic;
-use App\Models\Faq;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,25 +16,22 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique()->nullable();
+            $table->string('abbreviation')->nullable();
             $table->text('summary');
             $table->longText('description');
+            $table->boolean('featured')->default('true')->nullable();
+            $table->string('level', ['beginner', 'intermediate', 'advanced'])->default('beginner')->nullable(); // Enum for level
+            $table->string('status')->default('enabled');
             $table->string('duration')->nullable();
             $table->string('banner')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('badge')->nullable();
-            $table->string('slug')->unique();
-            $table->date('start_date')->nullable();
-            $table->foreignIdFor(User::class, 'trainer_id')->nullable();
-            $table->foreignIdFor(CourseTopic::class, 'topic_id')->nullable();
-            $table->foreignIdFor(CoursePrice::class, 'price_id')->nullable();
-            $table->foreignIdFor(Faq::class, 'faq_id')->nullable();
-            $table->string('brochure_url')->nullable();
-            $table->string('syllabus_url')->nullable();
-            $table->boolean('is_featured')->default(false);
-            $table->boolean('is_active')->default(true);
-            $table->string('course_type')->nullable();
-            $table->string('course_tag')->nullable();
-            $table->string('capture_type')->nullable();
+            $table->string('brochure')->nullable();
+            $table->string('delivery_mode')->nullable();
+            $table->string('tag')->nullable();
+            $table->string('cert_sample')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null'); // Foreign key for Category model
             $table->timestamps();
         });
     }

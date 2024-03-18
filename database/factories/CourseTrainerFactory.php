@@ -17,7 +17,12 @@ class CourseTrainerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'social_url' => fake()->url(),
+            'bio' => fake()->paragraph(),
+            'phone_number' => fake()->phoneNumber(),
+            'whatsapp_number' => fake()->phoneNumber(),
+            'email' => fake()->unique()->safeEmail(),
         ];
     }
 }

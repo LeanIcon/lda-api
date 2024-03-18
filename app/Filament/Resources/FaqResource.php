@@ -17,16 +17,18 @@ class FaqResource extends Resource
 {
     protected static ?string $model = Faq::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('question'),
-                Forms\Components\TextInput::make('answer'),
-                Forms\Components\TextInput::make('course_id')
-                    ->numeric(),
+                Forms\Components\TextInput::make('question')
+                    ->required(),
+                Forms\Components\TextInput::make('answer')
+                    ->required(),
+                Forms\Components\Select::make('course')
+                    ->relationship('course', 'abbreviation'),
             ]);
     }
 
@@ -36,9 +38,7 @@ class FaqResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('question')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('answer')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('course_id')
+                Tables\Columns\TextColumn::make('course.abbreviation')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

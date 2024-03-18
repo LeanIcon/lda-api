@@ -7,9 +7,13 @@ use App\Filament\Resources\CourseResource\RelationManagers;
 use App\Models\Course;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -24,37 +28,81 @@ class CourseResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required(),
+                ->required()
+                ->maxLength(255)
+                ->live(onBlur: true)
+                ->afterStateUpdated(function (Set $set, $state) {
+                    $set('slug', Str::slug($state));
+
+                // Extract initials for abbreviation
+                $initials = array_reduce(
+                    explode(' ', $state),
+                    function ($carry, $word) {
+                        return $carry . strtoupper($word[0]);
+                    },
+                    ''
+                );
+
+                // Validate and set abbreviation
+                $abbreviation = Str::limit($initials, 10);
+                if (strlen($abbreviation) > 10) {
+                    $set('errors', ['abbreviation' => 'Abbreviation cannot exceed 10 characters.']);
+                } else {
+                    $set('abbreviation', $abbreviation);
+                }
+            }),
+            Forms\Components\TextInput::make('slug')
+                ->required()
+                ->maxLength(255)
+                ->readOnly(),
+            Forms\Components\TextInput::make('abbreviation')
+                ->required()
+                ->maxLength(10)
+                ->readOnly(),
                 Forms\Components\Textarea::make('summary')
-                    ->required()
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('description')
-                    ->required()
                     ->columnSpanFull(),
+                Forms\Components\Toggle::make('featured'),
+                Forms\Components\TextInput::make('level'),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'enabled' => 'Enabled',
+                        'disabled' => 'Disabled',
+                    ]),
                 Forms\Components\TextInput::make('duration'),
-                Forms\Components\TextInput::make('banner'),
-                Forms\Components\TextInput::make('thumbnail'),
-                Forms\Components\TextInput::make('badge'),
-                Forms\Components\TextInput::make('slug')
-                    ->required(),
-                Forms\Components\DatePicker::make('start_date'),
-                Forms\Components\TextInput::make('trainer_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('topic_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('price_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('faq_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('brochure_url'),
-                Forms\Components\TextInput::make('syllabus_url'),
-                Forms\Components\Toggle::make('is_featured')
-                    ->required(),
-                Forms\Components\Toggle::make('is_active')
-                    ->required(),
-                Forms\Components\TextInput::make('course_type'),
-                Forms\Components\TextInput::make('course_tag'),
-                Forms\Components\TextInput::make('capture_type'),
+                Forms\Components\FileUpload::make('banner')
+                    ->image(),
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->image(),
+                Forms\Components\FileUpload::make('badge')
+                    ->image(),
+                Forms\Components\TextInput::make('brochure'),
+                Forms\Components\Select::make('delivery_mode')
+                ->label('Delivery Mode')
+                    ->options([
+                        'In_person' => 'In-Person',
+                        'virtual' => 'Virtual',
+                        'hybrid' => 'Hybrid',
+                    ]),
+                // Forms\Components\Select::make('course_trainer_id')
+                //     ->relationship(name: 'trainers', titleAttribute: 'name')
+                //     ->multiple()
+                //     ->preload()
+                //     ->pivotData([
+                //         'is_trainer' => true,
+                //     ]),
+
+                Forms\Components\Select::make('course_trainer_id')
+                    ->relationship('trainers', 'name')
+                    ->preload()
+                    ->searchable(),
+
+                // Other form fields...
+                Forms\Components\TextInput::make('tag'),
+                Forms\Components\FileUpload::make('cert_sample'),
+                Forms\Components\Select::make('category_id')
+                    ->relationship('category', 'name'),
             ]);
     }
 
@@ -62,47 +110,24 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('badge')
+                ->circular()
+                ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('duration')
+                    Tables\Columns\ImageColumn::make('thumbnail')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('banner')
+                Tables\Columns\TextColumn::make('abbreviation')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('thumbnail')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('badge')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('start_date')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('trainer_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('topic_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('price_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('faq_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('brochure_url')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('syllabus_url')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_featured')
+                Tables\Columns\IconColumn::make('featured')
                     ->boolean(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('course_type')
+                Tables\Columns\TextColumn::make('level')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('course_tag')
+                Tables\Columns\TextColumn::make('status')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('capture_type')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -128,7 +153,11 @@ class CourseResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\DateRelationManager::class,
+            RelationManagers\PriceRelationManager::class,
+            RelationManagers\ResourceRelationManager::class,
+            RelationManagers\CurriculumRelationManager::class,
+            // RelationManagers\TrainersRelationManager::class,
         ];
     }
 

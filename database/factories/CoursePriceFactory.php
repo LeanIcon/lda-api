@@ -22,6 +22,7 @@ class CoursePriceFactory extends Factory
             'early_bird_start_date' => fake()->date,
             'early_bird_end_date' => fake()->dateTimeBetween('-1  week', '+1 week'), // Example range
             'discount' => fake()->numberBetween(5, 50), // Percentage
+            'course_id' => fake()->numberBetween(1, 30), // Percentage
         ];
     }
 }
