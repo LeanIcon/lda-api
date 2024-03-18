@@ -1,0 +1,81 @@
+<?php
+namespace App\Filament\Resources\CourseResource\Api\Handlers;
+
+use Illuminate\Http\Request;
+use Rupadana\ApiService\Http\Handlers;
+use Spatie\QueryBuilder\QueryBuilder;
+use App\Filament\Resources\CourseResource;
+use App\Models\Course;
+use App\Models\CourseModule;
+use App\Models\CourseTopic;
+use App\Models\CourseTrainer;
+use App\Models\Lesson;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+
+class PaginationHandler extends Handlers {
+    public static bool $public = true;
+    public static string | null $uri = '/';
+    public static string | null $resource = CourseResource::class;
+
+    public function handler()
+    {
+        $model = static::getEloquentQuery();
+
+        $query = QueryBuilder::for($model)
+        ->allowedFields($model::$allowedFields ?? [])
+        ->allowedSorts($model::$allowedSorts ?? [])
+        ->allowedFilters($model::$allowedFilters ?? [])
+        ->paginate(request()->query('per_page'))
+        ->appends(request()->query());
+
+        $courses = $query->getCollection();
+
+        // $query = collect($query);
+
+        // Transform each course to include category name
+        $courses->map(function (Course $course) {
+            $data = $course->toArray();
+            $data['category_name'] = $course->category->name ?? null; // Handle missing category
+            $data['trainers'] = $course->trainers->map(function (CourseTrainer $trainer) {
+                return $trainer->only('id', 'name'); // Select specific user fields
+            })->all();
+
+            // // Add nested modules, topics, and lessons
+            // $data['modules'] = $course->modules->map(function (CourseModule $module) {
+            //     return [
+            //         'id' => $module->id,
+            //         'name' => $module->name,
+            //         'topics' => $module->topics->map(function (CourseTopic $topic) {
+            //             return [
+            //                 'id' => $topic->id,
+            //                 'name' => $topic->name,
+            //                 'lessons' => $topic->lessons->map(function (Lesson $lesson) {
+            //                     return [
+            //                         'id' => $lesson->id,
+            //                         'name' => $lesson->name,
+            //                     ];
+            //                 })->all(),
+            //             ];
+            //         })->all(),
+            //     ];
+            // })->all();
+
+            // Add image URLs based on your chosen approach (Approach A or B)
+    // $data['banner_url'] = $course->getBannerUrl() ?? null; // Approach A
+    // OR
+    $data['banner_url'] = $course->banner_image ? $course->banner_image->getUrl() : null; // Approach B
+
+    // $data['thumbnail_url'] = $course->getThumbnailUrl() ?? null; // Approach A
+    // OR
+    $data['thumbnail_url'] = $course->thumbnail_image ? $course->thumbnail_image->getUrl() : null; // Approach B
+
+            return $data;
+        })->all();
+
+
+        return static::getApiTransformer()::collection($query);
+    }
+
+
+}

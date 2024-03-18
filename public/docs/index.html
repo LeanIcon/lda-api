@@ -1,0 +1,2370 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>LiTT Digital Academy Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://127.0.0.1:8000";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.33.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.33.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-categories">
+                                <a href="#endpoints-GETapi-v1-categories">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-categories--id-">
+                                <a href="#endpoints-GETapi-v1-categories--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-courses">
+                                <a href="#endpoints-GETapi-v1-courses">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-courses--id-">
+                                <a href="#endpoints-GETapi-v1-courses--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-faqs">
+                                <a href="#endpoints-GETapi-v1-faqs">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-faqs--id-">
+                                <a href="#endpoints-GETapi-v1-faqs--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-testimonies">
+                                <a href="#endpoints-GETapi-v1-testimonies">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-testimonies--id-">
+                                <a href="#endpoints-GETapi-v1-testimonies--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-sliders">
+                                <a href="#endpoints-GETapi-v1-sliders">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-sliders--id-">
+                                <a href="#endpoints-GETapi-v1-sliders--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-trainers">
+                                <a href="#endpoints-GETapi-v1-trainers">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-trainers--id-">
+                                <a href="#endpoints-GETapi-v1-trainers--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-enrollments">
+                                <a href="#endpoints-POSTapi-v1-enrollments">Store a newly created resource in storage.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: March 18, 2024</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>Start (and never finish) side projects with this API.</p>
+<aside>
+    <strong>Base URL</strong>: <code>http://127.0.0.1:8000</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-v1-categories">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-categories">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Professional&quot;,
+            &quot;description&quot;: &quot;Our Professional based on courses&quot;,
+            &quot;image&quot;: &quot;Vel quod sunt non saepe totam. Tempore nesciunt aliquid consequatur autem neque sed consequuntur. Mollitia molestiae veritatis et dolorum sit.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;courses&quot;: []
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Certificate&quot;,
+            &quot;description&quot;: &quot;All Our Certificate based on courses&quot;,
+            &quot;image&quot;: &quot;Voluptates at dolores expedita necessitatibus ut et. Et fugiat magnam ratione culpa. Aliquid non perspiciatis libero est soluta excepturi qui.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;courses&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;title&quot;: &quot;Digital Product Manager&quot;,
+                    &quot;slug&quot;: &quot;digital-product-manager&quot;,
+                    &quot;abbreviation&quot;: &quot;DPM&quot;,
+                    &quot;summary&quot;: &quot;Dive into the world of digital product management and learn the essential skills needed to lead successful product teams and drive product innovation.\n  - This comprehensive 6-week program combines theoretical knowledge with hands-on workshops to provide you with practical experience in product management.&quot;,
+                    &quot;description&quot;: &quot;Dive into the world of digital product management and learn the essential skills needed to lead successful product teams and drive product innovation. This comprehensive 6-week program combines theoretical knowledge with hands-on workshops to provide you with practical experience in product management.&quot;,
+                    &quot;featured&quot;: true,
+                    &quot;level&quot;: &quot;beginner&quot;,
+                    &quot;status&quot;: true,
+                    &quot;duration&quot;: &quot;6 Weeks&quot;,
+                    &quot;banner&quot;: null,
+                    &quot;thumbnail&quot;: &quot;01HS6BNXWC1MCVXVAGDPTT9WCZ.jpg&quot;,
+                    &quot;badge&quot;: &quot;01HS6BNXWFEG5GB6VTZSGJRF7T.png&quot;,
+                    &quot;brochure&quot;: null,
+                    &quot;delivery_mode&quot;: &quot;hybrid&quot;,
+                    &quot;tag&quot;: null,
+                    &quot;cert_sample&quot;: &quot;01HS6BNXWHVBB54Q9N5ZE5GD5K.jpg&quot;,
+                    &quot;category_id&quot;: 2,
+                    &quot;created_at&quot;: &quot;2024-03-17T14:05:05.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2024-03-17T14:05:05.000000Z&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Career Accelerator&quot;,
+            &quot;description&quot;: &quot;Our Career Building Courses&quot;,
+            &quot;image&quot;: &quot;Molestiae atque itaque natus cupiditate. Corporis autem omnis eveniet quia nesciunt quia. Eveniet cumque tenetur aut incidunt suscipit.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;courses&quot;: []
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Workshops&quot;,
+            &quot;description&quot;: &quot;Our Workshops based on courses&quot;,
+            &quot;image&quot;: &quot;Vel est quia dolor autem. Deleniti repellat nam iure assumenda modi repellat ut laborum. Quibusdam vel sit voluptatem voluptas.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;courses&quot;: []
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-categories"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-categories">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-categories" data-method="GET"
+      data-path="api/v1/categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-categories"
+                    onclick="tryItOut('GETapi-v1-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-categories"
+                    onclick="cancelTryOut('GETapi-v1-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-categories"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/categories</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-v1-categories--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-categories--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/categories/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/categories/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-categories--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Professional&quot;,
+        &quot;description&quot;: &quot;Our Professional based on courses&quot;,
+        &quot;image&quot;: &quot;Vel quod sunt non saepe totam. Tempore nesciunt aliquid consequatur autem neque sed consequuntur. Mollitia molestiae veritatis et dolorum sit.&quot;,
+        &quot;status&quot;: &quot;active&quot;,
+        &quot;courses&quot;: []
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-categories--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-categories--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-categories--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-categories--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-categories--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-categories--id-" data-method="GET"
+      data-path="api/v1/categories/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-categories--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-categories--id-"
+                    onclick="tryItOut('GETapi-v1-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-categories--id-"
+                    onclick="cancelTryOut('GETapi-v1-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/categories/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-categories--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the category. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-courses">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-courses">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/courses" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/courses"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-courses">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;1&quot;,
+            &quot;title&quot;: &quot;Digital Product Manager&quot;,
+            &quot;slug&quot;: &quot;digital-product-manager&quot;,
+            &quot;abbreviation&quot;: &quot;DPM&quot;,
+            &quot;summary&quot;: &quot;Dive into the world of digital product management and learn the essential skills needed to lead successful product teams and drive product innovation.\n  - This comprehensive 6-week program combines theoretical knowledge with hands-on workshops to provide you with practical experience in product management.&quot;,
+            &quot;description&quot;: &quot;Dive into the world of digital product management and learn the essential skills needed to lead successful product teams and drive product innovation. This comprehensive 6-week program combines theoretical knowledge with hands-on workshops to provide you with practical experience in product management.&quot;,
+            &quot;category_id&quot;: 2,
+            &quot;duration&quot;: &quot;6 Weeks&quot;,
+            &quot;banner&quot;: {},
+            &quot;thumbnail&quot;: &quot;http://127.0.0.1:8000/01HS6BNXWC1MCVXVAGDPTT9WCZ.jpg&quot;,
+            &quot;badge&quot;: &quot;http://127.0.0.1:8000/01HS6BNXWFEG5GB6VTZSGJRF7T.png&quot;,
+            &quot;brochure&quot;: null,
+            &quot;featured&quot;: true,
+            &quot;status&quot;: true,
+            &quot;delivery_mode&quot;: &quot;hybrid&quot;,
+            &quot;tag&quot;: null,
+            &quot;cert_sample&quot;: &quot;http://127.0.0.1:8000/01HS6BNXWHVBB54Q9N5ZE5GD5K.jpg&quot;,
+            &quot;curriculum&quot;: null,
+            &quot;price&quot;: {
+                &quot;amount&quot;: null,
+                &quot;currency&quot;: null
+            },
+            &quot;start_date&quot;: &quot;2024-03-26&quot;,
+            &quot;application_end_date&quot;: &quot;2024-03-22&quot;,
+            &quot;faqs&quot;: null,
+            &quot;learningResource&quot;: null
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-courses" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-courses"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-courses"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-courses" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-courses">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-courses" data-method="GET"
+      data-path="api/v1/courses"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-courses', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-courses"
+                    onclick="tryItOut('GETapi-v1-courses');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-courses"
+                    onclick="cancelTryOut('GETapi-v1-courses');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-courses"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/courses</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-courses"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-courses"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-v1-courses--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-courses--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/courses/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/courses/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-courses--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;Digital Product Manager&quot;,
+    &quot;slug&quot;: &quot;digital-product-manager&quot;,
+    &quot;abbreviation&quot;: &quot;DPM&quot;,
+    &quot;summary&quot;: &quot;Dive into the world of digital product management and learn the essential skills needed to lead successful product teams and drive product innovation.\n  - This comprehensive 6-week program combines theoretical knowledge with hands-on workshops to provide you with practical experience in product management.&quot;,
+    &quot;description&quot;: &quot;Dive into the world of digital product management and learn the essential skills needed to lead successful product teams and drive product innovation. This comprehensive 6-week program combines theoretical knowledge with hands-on workshops to provide you with practical experience in product management.&quot;,
+    &quot;category_id&quot;: 2,
+    &quot;duration&quot;: &quot;6 Weeks&quot;,
+    &quot;thumbnail&quot;: &quot;01HS6BNXWC1MCVXVAGDPTT9WCZ.jpg&quot;,
+    &quot;banner&quot;: null,
+    &quot;badge&quot;: &quot;01HS6BNXWFEG5GB6VTZSGJRF7T.png&quot;,
+    &quot;brochure&quot;: null,
+    &quot;featured&quot;: true,
+    &quot;status&quot;: true,
+    &quot;delivery_mode&quot;: &quot;hybrid&quot;,
+    &quot;tag&quot;: null,
+    &quot;cert_sample&quot;: &quot;01HS6BNXWHVBB54Q9N5ZE5GD5K.jpg&quot;,
+    &quot;faqs&quot;: [],
+    &quot;trainers&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;image&quot;: &quot;01HS65147BSFTM4Q3184VZWN80.jpg&quot;,
+            &quot;name&quot;: &quot;Daniel Korsinah&quot;,
+            &quot;expertise&quot;: &quot;Digital Transformation Expert&quot;,
+            &quot;phone&quot;: &quot;+1234567890&quot;,
+            &quot;bio&quot;: &quot;John Doe is a seasoned web developer with over 10 years of experience. He specializes in building user-friendly and scalable web applications.&quot;,
+            &quot;social_url&quot;: &quot;https://www.linkedin.com/in/john-doe-1234&quot;,
+            &quot;deleted_at&quot;: null,
+            &quot;created_at&quot;: &quot;2024-03-17T12:03:39.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-03-17T12:08:52.000000Z&quot;,
+            &quot;pivot&quot;: {
+                &quot;course_id&quot;: 1,
+                &quot;trainer_id&quot;: 1
+            }
+        }
+    ],
+    &quot;testimonials&quot;: [],
+    &quot;resources&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Weekly interactive lectures and workshops&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Case studies and real-world examples&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Access to industry-standard tools and software&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-courses--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-courses--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-courses--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-courses--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-courses--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-courses--id-" data-method="GET"
+      data-path="api/v1/courses/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-courses--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-courses--id-"
+                    onclick="tryItOut('GETapi-v1-courses--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-courses--id-"
+                    onclick="cancelTryOut('GETapi-v1-courses--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-courses--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/courses/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-courses--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-courses--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-courses--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the course. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-faqs">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-faqs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/faqs" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/faqs"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-faqs">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 55
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;question&quot;: &quot;Error illum a illo dolorem.&quot;,
+            &quot;answer&quot;: &quot;Labore laboriosam autem et. Illum magnam delectus explicabo tenetur. Voluptas dicta iste optio rerum aut. Saepe quia reiciendis voluptates fuga.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;question&quot;: &quot;Earum sed tempora unde consequuntur nihil incidunt perspiciatis.&quot;,
+            &quot;answer&quot;: &quot;Iusto ut quis repellat deleniti delectus qui. Ut et eveniet illo. Et eveniet omnis quia deserunt voluptates et sint nemo.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;question&quot;: &quot;Et est in ipsa nihil consequatur sint sit.&quot;,
+            &quot;answer&quot;: &quot;Corporis ab delectus eveniet inventore cumque. Illo consectetur quas earum excepturi dolor aspernatur. Ipsam perspiciatis modi est vel. Labore totam natus accusamus illum eveniet.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;question&quot;: &quot;Dolor maiores quos et necessitatibus cupiditate enim et.&quot;,
+            &quot;answer&quot;: &quot;Ut possimus soluta laborum nihil natus rem itaque. Quidem cupiditate officia doloremque qui rerum. Reprehenderit inventore quia et praesentium ex.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;question&quot;: &quot;Ipsa dicta incidunt qui.&quot;,
+            &quot;answer&quot;: &quot;Sunt dicta aspernatur quo reiciendis molestias laudantium voluptas. Saepe est nisi dicta. Nulla delectus aliquid consequatur aperiam a iste. Quia impedit aperiam tempora ipsam.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;question&quot;: &quot;Neque ipsum possimus aut aut rerum maiores non voluptatibus.&quot;,
+            &quot;answer&quot;: &quot;Saepe ad ut porro qui minus. Ipsa et blanditiis molestiae ut voluptas mollitia inventore. Nam sit voluptates et rerum.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;question&quot;: &quot;Dolorem modi consequatur maiores sed.&quot;,
+            &quot;answer&quot;: &quot;Quibusdam animi atque nihil atque eum tenetur ullam. Aut expedita quidem labore commodi. Eum ut at dolor. Ipsum aut sit quis id quae.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;question&quot;: &quot;Fugiat vel facere beatae ut nihil quia laborum.&quot;,
+            &quot;answer&quot;: &quot;Quis quibusdam provident est doloribus sapiente aut. Nihil ut dolorum cumque itaque. Provident laboriosam et dolorum sunt rerum minima sit.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;question&quot;: &quot;Magnam neque rerum ut et assumenda.&quot;,
+            &quot;answer&quot;: &quot;Delectus ratione itaque a dolor. Facere natus dolorum itaque fugiat quis. Consequatur voluptatem blanditiis id odio commodi iste.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;question&quot;: &quot;Porro deserunt eaque iste quas enim consequatur ipsam.&quot;,
+            &quot;answer&quot;: &quot;Id magni numquam illo nostrum quod. Nihil et neque molestiae laborum minima. Eos voluptate error est at nemo impedit. Magnam et voluptas quaerat omnis.&quot;,
+            &quot;is_parent&quot;: null,
+            &quot;course_id&quot;: null
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-faqs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-faqs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-faqs"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-faqs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-faqs">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-faqs" data-method="GET"
+      data-path="api/v1/faqs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-faqs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-faqs"
+                    onclick="tryItOut('GETapi-v1-faqs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-faqs"
+                    onclick="cancelTryOut('GETapi-v1-faqs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-faqs"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/faqs</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-faqs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-faqs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-v1-faqs--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-faqs--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/faqs/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/faqs/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-faqs--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 54
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;question&quot;: &quot;Error illum a illo dolorem.&quot;,
+        &quot;answer&quot;: &quot;Labore laboriosam autem et. Illum magnam delectus explicabo tenetur. Voluptas dicta iste optio rerum aut. Saepe quia reiciendis voluptates fuga.&quot;,
+        &quot;is_parent&quot;: null,
+        &quot;course_id&quot;: null
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-faqs--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-faqs--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-faqs--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-faqs--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-faqs--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-faqs--id-" data-method="GET"
+      data-path="api/v1/faqs/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-faqs--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-faqs--id-"
+                    onclick="tryItOut('GETapi-v1-faqs--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-faqs--id-"
+                    onclick="cancelTryOut('GETapi-v1-faqs--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-faqs--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/faqs/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-faqs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-faqs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-faqs--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the faq. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-testimonies">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-testimonies">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/testimonies" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/testimonies"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-testimonies">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 53
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Aniyah Becker&quot;,
+            &quot;description&quot;: &quot;Geovany Kirlin Sr.&quot;,
+            &quot;comment&quot;: &quot;Dolor autem id ratione.&quot;,
+            &quot;star_rating&quot;: 2,
+            &quot;is_visible&quot;: 1
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Monserrate Collins&quot;,
+            &quot;description&quot;: &quot;Kareem Turcotte&quot;,
+            &quot;comment&quot;: &quot;Ullam atque esse molestias.&quot;,
+            &quot;star_rating&quot;: 8,
+            &quot;is_visible&quot;: 1
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Tamia Kautzer&quot;,
+            &quot;description&quot;: &quot;Kennedi Purdy&quot;,
+            &quot;comment&quot;: &quot;Sed ipsam fuga ex in.&quot;,
+            &quot;star_rating&quot;: 2,
+            &quot;is_visible&quot;: 0
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Jacky Fritsch&quot;,
+            &quot;description&quot;: &quot;Madie O&#039;Conner&quot;,
+            &quot;comment&quot;: &quot;Et aut dolorum sit ut dolores.&quot;,
+            &quot;star_rating&quot;: 8,
+            &quot;is_visible&quot;: 1
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Dr. Krystel Bosco&quot;,
+            &quot;description&quot;: &quot;Mr. Trystan Lesch II&quot;,
+            &quot;comment&quot;: &quot;Aut consequatur corporis quo enim voluptas.&quot;,
+            &quot;star_rating&quot;: 6,
+            &quot;is_visible&quot;: 0
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Sheridan Rutherford&quot;,
+            &quot;description&quot;: &quot;Alice Tromp&quot;,
+            &quot;comment&quot;: &quot;Iusto assumenda nihil.&quot;,
+            &quot;star_rating&quot;: 4,
+            &quot;is_visible&quot;: 1
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Rowena Pouros&quot;,
+            &quot;description&quot;: &quot;Ms. Addie Jakubowski I&quot;,
+            &quot;comment&quot;: &quot;Fugit est numquam culpa et.&quot;,
+            &quot;star_rating&quot;: 6,
+            &quot;is_visible&quot;: 1
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Ellen Haley&quot;,
+            &quot;description&quot;: &quot;Mr. Major Schmeler&quot;,
+            &quot;comment&quot;: &quot;Eos facilis saepe.&quot;,
+            &quot;star_rating&quot;: 2,
+            &quot;is_visible&quot;: 0
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;name&quot;: &quot;Prof. Alfredo Sanford&quot;,
+            &quot;description&quot;: &quot;Zena Feest&quot;,
+            &quot;comment&quot;: &quot;Fuga laborum quis.&quot;,
+            &quot;star_rating&quot;: 8,
+            &quot;is_visible&quot;: 1
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;name&quot;: &quot;Jarvis Labadie&quot;,
+            &quot;description&quot;: &quot;Mac Auer III&quot;,
+            &quot;comment&quot;: &quot;Eum optio fugit.&quot;,
+            &quot;star_rating&quot;: 3,
+            &quot;is_visible&quot;: 1
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-testimonies" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-testimonies"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-testimonies"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-testimonies" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-testimonies">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-testimonies" data-method="GET"
+      data-path="api/v1/testimonies"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-testimonies', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-testimonies"
+                    onclick="tryItOut('GETapi-v1-testimonies');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-testimonies"
+                    onclick="cancelTryOut('GETapi-v1-testimonies');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-testimonies"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/testimonies</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-testimonies"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-testimonies"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-v1-testimonies--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-testimonies--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/testimonies/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/testimonies/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-testimonies--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 52
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Aniyah Becker&quot;,
+        &quot;description&quot;: &quot;Geovany Kirlin Sr.&quot;,
+        &quot;comment&quot;: &quot;Dolor autem id ratione.&quot;,
+        &quot;star_rating&quot;: 2,
+        &quot;is_visible&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-testimonies--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-testimonies--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-testimonies--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-testimonies--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-testimonies--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-testimonies--id-" data-method="GET"
+      data-path="api/v1/testimonies/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-testimonies--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-testimonies--id-"
+                    onclick="tryItOut('GETapi-v1-testimonies--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-testimonies--id-"
+                    onclick="cancelTryOut('GETapi-v1-testimonies--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-testimonies--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/testimonies/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-testimonies--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-testimonies--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-testimonies--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the testimony. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-sliders">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-sliders">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/sliders" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/sliders"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-sliders">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 51
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;image&quot;: &quot;https://via.placeholder.com/1920x1080.png/00ff22?text=quidem&quot;,
+            &quot;description&quot;: &quot;Dolor iusto odit non non. Et explicabo excepturi fugit deleniti. Vero sed quas aut et sit est ducimus. Culpa qui est accusamus quia debitis.&quot;,
+            &quot;cta_name&quot;: &quot;Eos quos aut sit et. Sed dolores distinctio itaque. Dolorem incidunt maiores fugiat architecto ut harum. Quaerat debitis veritatis quos dignissimos voluptatem est.&quot;,
+            &quot;cta_url&quot;: &quot;http://stoltenberg.com/optio-autem-voluptates-magnam-magni-eius.html&quot;,
+            &quot;button_name&quot;: &quot;Praesentium omnis nemo ipsa itaque. Facilis accusamus sapiente id repudiandae error sed.&quot;,
+            &quot;button_url&quot;: &quot;http://bashirian.com/beatae-debitis-quia-earum-dolor-non-quae&quot;,
+            &quot;is_active&quot;: 1,
+            &quot;created_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;image&quot;: &quot;https://via.placeholder.com/1920x1080.png/00ff33?text=non&quot;,
+            &quot;description&quot;: &quot;Atque similique voluptates a asperiores. Qui officiis voluptatem ea quaerat libero dicta porro est. Tempore id quisquam sed.&quot;,
+            &quot;cta_name&quot;: &quot;Voluptatem omnis esse quis dolorem sapiente voluptatibus itaque. Illum perspiciatis recusandae ipsum quod quibusdam. Totam ad nihil animi. Sint architecto iusto blanditiis et iusto ullam.&quot;,
+            &quot;cta_url&quot;: &quot;http://olson.com/pariatur-dolorum-ut-ut-voluptatibus-est-nisi&quot;,
+            &quot;button_name&quot;: &quot;Earum totam voluptatum ut rem nam. Consequatur id similique enim ratione asperiores vitae rem. Aut necessitatibus incidunt soluta aut animi qui.&quot;,
+            &quot;button_url&quot;: &quot;http://bradtke.com/sed-maxime-est-ipsa-dolorem.html&quot;,
+            &quot;is_active&quot;: 1,
+            &quot;created_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;image&quot;: &quot;https://via.placeholder.com/1920x1080.png/00aa99?text=molestiae&quot;,
+            &quot;description&quot;: &quot;Enim facere qui recusandae necessitatibus. Harum tempora at ea amet distinctio laudantium et. Occaecati officiis nobis repellat nostrum deserunt rerum fugit.&quot;,
+            &quot;cta_name&quot;: &quot;Aut accusamus ea aut qui laborum. Quaerat eum omnis ut molestiae unde. Quae maiores reprehenderit odio assumenda.&quot;,
+            &quot;cta_url&quot;: &quot;https://rodriguez.com/est-facere-tempore-sunt-eaque-et-sunt-ea.html&quot;,
+            &quot;button_name&quot;: &quot;Ipsa veniam qui deleniti. Impedit corporis consequatur vero occaecati est est. Ipsa et ea error adipisci voluptate ab ducimus. Maiores voluptatem qui mollitia dolorum atque.&quot;,
+            &quot;button_url&quot;: &quot;https://stanton.com/est-eum-iste-dolores-nam.html&quot;,
+            &quot;is_active&quot;: 1,
+            &quot;created_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;image&quot;: &quot;https://via.placeholder.com/1920x1080.png/001111?text=occaecati&quot;,
+            &quot;description&quot;: &quot;Voluptates aut voluptatibus ut aut qui maiores magnam. Et sit quae iusto praesentium dolorem omnis autem ipsum. Recusandae omnis magnam quaerat ut. Repudiandae consequuntur tempore necessitatibus atque et.&quot;,
+            &quot;cta_name&quot;: &quot;Cum voluptatem dolor a odio beatae. Ipsa est ullam voluptatum et dolores. Molestiae voluptas temporibus aut nostrum.&quot;,
+            &quot;cta_url&quot;: &quot;http://www.abshire.com/occaecati-quo-sed-ex-molestiae.html&quot;,
+            &quot;button_name&quot;: &quot;Qui debitis aliquam voluptatem ad. Aut aut aut est. Fuga vitae cum cupiditate.&quot;,
+            &quot;button_url&quot;: &quot;http://howe.com/temporibus-dolores-temporibus-aspernatur-excepturi&quot;,
+            &quot;is_active&quot;: 0,
+            &quot;created_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;image&quot;: &quot;https://via.placeholder.com/1920x1080.png/00cc11?text=modi&quot;,
+            &quot;description&quot;: &quot;Illo iste nam in voluptate. Rerum qui doloribus minima. Consequatur alias et aut voluptas omnis sed explicabo.&quot;,
+            &quot;cta_name&quot;: &quot;Maxime et porro commodi quia velit recusandae aut quod. Asperiores nihil quo consectetur. Architecto ut non maiores consequatur sed quaerat voluptates.&quot;,
+            &quot;cta_url&quot;: &quot;http://kerluke.com/&quot;,
+            &quot;button_name&quot;: &quot;Deserunt quia pariatur et recusandae. Laudantium recusandae eos est. Aut voluptatem vitae aut.&quot;,
+            &quot;button_url&quot;: &quot;http://legros.com/natus-dolores-qui-possimus.html&quot;,
+            &quot;is_active&quot;: 1,
+            &quot;created_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-sliders" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-sliders"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-sliders"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-sliders" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-sliders">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-sliders" data-method="GET"
+      data-path="api/v1/sliders"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-sliders', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-sliders"
+                    onclick="tryItOut('GETapi-v1-sliders');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-sliders"
+                    onclick="cancelTryOut('GETapi-v1-sliders');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-sliders"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/sliders</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-sliders"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-sliders"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-v1-sliders--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-sliders--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/sliders/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/sliders/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-sliders--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 50
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;image&quot;: &quot;https://via.placeholder.com/1920x1080.png/00ff22?text=quidem&quot;,
+        &quot;description&quot;: &quot;Dolor iusto odit non non. Et explicabo excepturi fugit deleniti. Vero sed quas aut et sit est ducimus. Culpa qui est accusamus quia debitis.&quot;,
+        &quot;cta_name&quot;: &quot;Eos quos aut sit et. Sed dolores distinctio itaque. Dolorem incidunt maiores fugiat architecto ut harum. Quaerat debitis veritatis quos dignissimos voluptatem est.&quot;,
+        &quot;cta_url&quot;: &quot;http://stoltenberg.com/optio-autem-voluptates-magnam-magni-eius.html&quot;,
+        &quot;button_name&quot;: &quot;Praesentium omnis nemo ipsa itaque. Facilis accusamus sapiente id repudiandae error sed.&quot;,
+        &quot;button_url&quot;: &quot;http://bashirian.com/beatae-debitis-quia-earum-dolor-non-quae&quot;,
+        &quot;is_active&quot;: 1,
+        &quot;created_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-03-17T10:56:22.000000Z&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-sliders--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-sliders--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-sliders--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-sliders--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-sliders--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-sliders--id-" data-method="GET"
+      data-path="api/v1/sliders/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-sliders--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-sliders--id-"
+                    onclick="tryItOut('GETapi-v1-sliders--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-sliders--id-"
+                    onclick="cancelTryOut('GETapi-v1-sliders--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-sliders--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/sliders/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-sliders--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-sliders--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-sliders--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the slider. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-trainers">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-trainers">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/trainers" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/trainers"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-trainers">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 49
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Daniel Korsinah&quot;,
+            &quot;expertise&quot;: &quot;Digital Transformation Expert&quot;,
+            &quot;bio&quot;: &quot;John Doe is a seasoned web developer with over 10 years of experience. He specializes in building user-friendly and scalable web applications.&quot;,
+            &quot;social_url&quot;: &quot;https://www.linkedin.com/in/john-doe-1234&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;William Korsinah&quot;,
+            &quot;expertise&quot;: &quot;Agile, Leadership Consultant&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Carlos&quot;,
+            &quot;expertise&quot;: &quot;Agile Transformation Consultant&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Tom Collins&quot;,
+            &quot;expertise&quot;: &quot;Microsoft Power User&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Frank Acquah&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Joseph Star Botchway&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Redeemer Dela&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Christian Amoakohene&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;name&quot;: &quot;Kwesi Mensah Atta&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;name&quot;: &quot;Samuel Amui&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;name&quot;: &quot;Curtis Mensah&quot;,
+            &quot;expertise&quot;: &quot;Data Science&quot;,
+            &quot;bio&quot;: &quot;Jane Smith is a data scientist with a passion for extracting insights from data. She has experience in machine learning and data analysis.&quot;,
+            &quot;social_url&quot;: &quot;https://twitter.com/jane_data&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-trainers" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-trainers"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-trainers"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-trainers" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-trainers">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-trainers" data-method="GET"
+      data-path="api/v1/trainers"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-trainers', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-trainers"
+                    onclick="tryItOut('GETapi-v1-trainers');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-trainers"
+                    onclick="cancelTryOut('GETapi-v1-trainers');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-trainers"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/trainers</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-trainers"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-trainers"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-v1-trainers--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-trainers--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/trainers/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/trainers/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-trainers--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 48
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Daniel Korsinah&quot;,
+        &quot;expertise&quot;: &quot;Digital Transformation Expert&quot;,
+        &quot;bio&quot;: &quot;John Doe is a seasoned web developer with over 10 years of experience. He specializes in building user-friendly and scalable web applications.&quot;,
+        &quot;social_url&quot;: &quot;https://www.linkedin.com/in/john-doe-1234&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-trainers--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-trainers--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-trainers--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-trainers--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-trainers--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-trainers--id-" data-method="GET"
+      data-path="api/v1/trainers/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-trainers--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-trainers--id-"
+                    onclick="tryItOut('GETapi-v1-trainers--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-trainers--id-"
+                    onclick="cancelTryOut('GETapi-v1-trainers--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-trainers--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/trainers/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-trainers--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-trainers--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-trainers--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the trainer. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-v1-enrollments">Store a newly created resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-enrollments">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/enrollments" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"selected_course\": [
+        2
+    ],
+    \"email\": \"emanuel49@example.org\",
+    \"status\": \"pending\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/enrollments"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "selected_course": [
+        2
+    ],
+    "email": "emanuel49@example.org",
+    "status": "pending"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-enrollments">
+</span>
+<span id="execution-results-POSTapi-v1-enrollments" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-enrollments"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-enrollments"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-enrollments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-enrollments">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-enrollments" data-method="POST"
+      data-path="api/v1/enrollments"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-enrollments', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-enrollments"
+                    onclick="tryItOut('POSTapi-v1-enrollments');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-enrollments"
+                    onclick="cancelTryOut('POSTapi-v1-enrollments');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-enrollments"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/enrollments</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-enrollments"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-enrollments"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>selected_course</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="selected_course[0]"                data-endpoint="POSTapi-v1-enrollments"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="selected_course[1]"                data-endpoint="POSTapi-v1-enrollments"
+               data-component="body">
+    <br>
+<p>Ensure at least one course is selected.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-v1-enrollments"
+               value="emanuel49@example.org"
+               data-component="body">
+    <br>
+<p>Validate each course ID. Must be a valid email address. Example: <code>emanuel49@example.org</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-v1-enrollments"
+               value="pending"
+               data-component="body">
+    <br>
+<p>'transaction_ref' =&gt; 'nullable|string',
+'payment_details' =&gt; 'nullable|json',. Example: <code>pending</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>approved</code></li> <li><code>rejected</code></li></ul>
+        </div>
+        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>
